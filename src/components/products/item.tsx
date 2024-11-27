@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../types";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Product } from "../../graphql/products";
 
 const ProductItem = ({
-  category,
-  description,
   id,
-  image,
+  imageUrl,
   price,
-  rating,
+  category,
   title,
+  descriptiom,
+  createdAt,
+  rate,
 }: Product) => {
   return (
     <div className="flex flex-col items-start justify-between">
@@ -18,7 +19,7 @@ const ProductItem = ({
         <div className="relative w-full h-[424px]">
           <img
             alt=""
-            src={image}
+            src={imageUrl}
             className="w-full h-full bg-white object-contain"
           />
         </div>
@@ -29,8 +30,8 @@ const ProductItem = ({
             <div className="mt-6 flex justify-between">
               <span className="text-md font-bold">${price}</span>
               <span className="text-md font-bold">
-                <FontAwesomeIcon icon={faStar} className="pr-1"/>
-                {rating.rate}
+                <FontAwesomeIcon icon={faStar} className="pr-1" />
+                {rate}
               </span>
             </div>
           </div>

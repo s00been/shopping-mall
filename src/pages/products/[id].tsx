@@ -1,20 +1,8 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { fetcher, QueryKeys } from "../../queryClient";
-import { Product } from "../../types";
+import { graphqlFetcher, QueryKeys } from "../../queryClient";
+import GET_PRODUCTS, { Product } from "../../graphql/products";
 
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Radio,
-  RadioGroup,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-} from "@headlessui/react";
 import StarRatings from "react-star-ratings";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
@@ -22,11 +10,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useQuery<Product>(
     [QueryKeys.PRODUCTS, id],
-    () =>
-      fetcher({
-        method: "GET",
-        path: `/products/${id}`,
-      })
+    () => graphqlFetcher(GET_PRODUCT, { id })
   );
 
   if (isLoading) {
@@ -41,7 +25,7 @@ const ProductDetail = () => {
     );
   }
 
-  const { category, description, image, price, rating, title } = data;
+  const { category, description, imageUrl, price, rating, title } = data;
 
   console.log(data);
 
@@ -52,8 +36,8 @@ const ProductDetail = () => {
           {/* Image gallery */}
           <div className="mt-10 lg:col-start-1 lg:row-span-2 lg:mt-0 lg:self-center">
             <img
-              alt={image}
-              src={image}
+              alt={imageUrl}
+              src={imageUrl}
               className="aspect-square w-full rounded-lg object-contain"
             />
           </div>

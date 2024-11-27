@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    div,
+    input,
+    textarea,
+    button,
+    select,
+    a {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+
+    textarea, input, input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+        @apply focus:outline-none focus:ring-0 focus:border-[#494B50] px-2 border-[#C8C9D6] border-[1px]
+    }
+    textarea:focus::placeholder, input:focus::placeholder, input[type="text"]:focus::placeholder, input[type="password"]:focus::placeholder, input[type="number"]:focus::placeholder {
+        @apply opacity-0
+    }
+   select {
+        @apply focus:outline-none focus:ring-0 focus:border-[#494B50] px-2 border-[#C8C9D6] border-[1px] bg-[url('/images/icon_down.png')] bg-auto
+    }
+
+    textarea::placeholder , input::placeholder{
+        @apply text-[14px] lg:text-[15px] text-[#C8C9D6]
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox  test*/
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px #fff inset ; -webkit-text-fill-color: #000; }
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { transition: background-color 5000s ease-in-out 0s; }
+}

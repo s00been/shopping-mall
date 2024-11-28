@@ -6,6 +6,7 @@ import { routes } from "./routes";
 import "./styles/globals.css";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Header from "./components/commons/header";
+import Footer from "./components/commons/Footer";
 
 const App = () => {
   const queryClient = getClient();
@@ -15,6 +16,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <Header />
       {elem}
+      <Footer />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

@@ -181,6 +181,22 @@ const MainPage = () => {
             </div>
           </div>
         </div>
+        {/* 버전관리 */}
+        <div className="flex justify-center gap-x-20 py-5">
+          <p className="w-[150px] font-semibold">DevOps</p>
+          <div className="grid grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+            <div className="w-[205px] h-[60px] px-[12px] py-[16px] rounded-[4px] border border-[rgba(55,53,47,0.16)] flex items-center font-semibold text-[#3c3c43] text-md">
+              <img
+                src="assets/images/git_logo.svg"
+                alt="Github Logo"
+                width={22}
+                height={22}
+                className="col-span-2 object-contain lg:col-span-1 mr-2"
+              />
+              Github
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

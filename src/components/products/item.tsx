@@ -1,5 +1,9 @@
-import { Link } from "react-router-dom";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { useNavigate } from "react-router-dom";
+import {
+  faStar as farStar,
+  faHeart as farHeart,
+} from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Product } from "../../graphql/products";
 
@@ -13,14 +17,27 @@ const ProductItem = ({
   createdAt,
   rate,
 }: Product) => {
+  const navigate = useNavigate();
+
+  const handlePageMove = () => {
+    navigate(`/products/${id}`);
+  };
   return (
     <div className="flex flex-col items-start justify-between">
-      <Link to={`/products/${id}`}>
+      <div role="button" onClick={handlePageMove}>
         <div className="relative w-full h-[222px]">
           <img
             alt=""
             src={imageUrl}
             className="w-full h-full bg-white object-contain"
+          />
+          <FontAwesomeIcon
+            icon={farHeart}
+            className="absolute bottom-2 right-2 pr-1 text-[20px] text-white shadow-sm"
+            onClick={(e) => {
+              e.stopPropagation();
+              console.log("FontAwesomeIcon clicked!");
+            }}
           />
         </div>
         <div className="max-w-xl w-full">
@@ -30,13 +47,13 @@ const ProductItem = ({
             <div className="mt-6 flex justify-between">
               <span className="text-md font-bold">${price}</span>
               <span className="text-md font-bold">
-                <FontAwesomeIcon icon={faStar} className="pr-1" />
+                <FontAwesomeIcon icon={farStar} className="pr-1" />
                 {rate}
               </span>
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

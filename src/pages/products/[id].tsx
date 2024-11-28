@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { graphqlFetcher, QueryKeys } from "../../queryClient";
-import GET_PRODUCTS, { Product } from "../../graphql/products";
+import { GET_PRODUCT } from "../../graphql/products";
 
 import StarRatings from "react-star-ratings";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
@@ -10,7 +10,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useQuery<Product>(
     [QueryKeys.PRODUCTS, id],
-    () => graphqlFetcher(GET_PRODUCT, { id })
+    () => graphqlFetcher(GET_PRODUCT, { id }) as Promise<Product>
   );
 
   if (isLoading) {
@@ -25,7 +25,7 @@ const ProductDetail = () => {
     );
   }
 
-  const { category, description, imageUrl, price, rating, title } = data;
+  const { category, description, imageUrl, price, rate, title } = data;
 
   console.log(data);
 
@@ -59,7 +59,7 @@ const ProductDetail = () => {
               <div className="flex items-center">
                 <div className="flex items-center">
                   <StarRatings
-                    rating={rating.rate} // 현재 별점 값
+                    rating={rate} // 현재 별점 값
                     starRatedColor="black" // 채워진 별의 색상
                     numberOfStars={5} // 전체 별의 개수
                     name="rating" // 별점 컴포넌트의 이름
@@ -67,7 +67,7 @@ const ProductDetail = () => {
                     starSpacing="2px" // 별 사이의 간격
                   />
                 </div>
-                <p className="sr-only">{rating.rate} out of 5 stars</p>
+                <p className="sr-only">{rate} out of 5 stars</p>
               </div>
             </div>
 

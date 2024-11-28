@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Cart } from "../../graphqlType";
+import numeral from "numeral";
 
 import {
   CheckIcon,
@@ -54,7 +55,9 @@ const CartItem = ({
             <div className="mt-1 flex text-sm">
               <p className="text-gray-500">{category}</p>
             </div>
-            <p className="mt-1 text-sm font-medium text-gray-900">${price}</p>
+            <p className="mt-1 text-sm font-medium text-gray-900">
+              {numeral(price).format("0,0")}
+            </p>
           </div>
 
           <div className="mt-4 sm:mt-0 sm:pr-9">

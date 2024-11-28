@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Product } from "../../graphqlType";
 import { likeItemSelector } from "../../recoils/like";
 import { useRecoilState, useRecoilValue } from "recoil";
+import numeral from "numeral";
+
 const ProductItem = ({
   id,
   imageUrl,
@@ -51,7 +53,9 @@ const ProductItem = ({
             <span className="text-sm font-semibold">{category}</span>
             <span className="text-sm">{title}</span>
             <div className="mt-6 flex justify-between">
-              <span className="text-md font-bold">${price}</span>
+              <span className="text-md font-bold">
+                {numeral(price).format("0,0")}
+              </span>
               <span className="text-md font-bold">
                 <FontAwesomeIcon icon={farStar} className="pr-1" />
                 {rate}

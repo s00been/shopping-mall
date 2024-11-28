@@ -90,12 +90,6 @@ const MainPage = () => {
                 className="col-span-2 max-h-12 object-contain lg:col-span-1"
               />
             </div>
-          </div>
-        </div>
-        {/* 백엔드 및 API */}
-        <div className="flex justify-center gap-x-20 py-5">
-          <p className="w-[150px] font-semibold">Backend / API</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
             <div className="w-[205px] h-[60px] px-[12px] py-[16px] rounded-[4px] border border-[rgba(55,53,47,0.16)] flex items-center font-semibold text-[#3c3c43] text-md">
               <img
                 src="https://tanstack.com/_build/assets/logo-color-100w-br5_Ikqp.png"
@@ -109,6 +103,12 @@ const MainPage = () => {
                 <p>(React-query)</p>
               </div>
             </div>
+          </div>
+        </div>
+        {/* 백엔드 및 API */}
+        <div className="flex justify-center gap-x-20 py-5">
+          <p className="w-[150px] font-semibold">Backend / API</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
             <div className="w-[205px] h-[60px] px-[12px] py-[16px] rounded-[4px] border border-[rgba(55,53,47,0.16)] flex items-center font-semibold text-[#3c3c43] text-md">
               <img
                 src="https://graphql.org/img/logo.svg"

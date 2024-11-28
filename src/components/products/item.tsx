@@ -9,14 +9,14 @@ const ProductItem = ({
   price,
   category,
   title,
-  descriptiom,
+  description,
   createdAt,
   rate,
 }: Product) => {
   return (
     <div className="flex flex-col items-start justify-between">
       <Link to={`/products/${id}`}>
-        <div className="relative w-full h-[424px]">
+        <div className="relative w-full h-[222px]">
           <img
             alt=""
             src={imageUrl}

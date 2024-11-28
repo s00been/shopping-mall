@@ -12,11 +12,11 @@ export const routes = [
     path: "/",
     element: <GlobalLayout />,
     children: [
-      { path: "/", element: <Index /> },
-      { path: "/products", element: <ProductsIndex /> },
+      { path: "/", element: <Index />, index: true },
+      { path: "/cart", element: <Cart />, index: true },
+      { path: "/payment", element: <Payment />, index: true },
+      { path: "/products", element: <ProductsIndex />, index: true },
       { path: "/products/:id", element: <ProductsId /> },
-      { path: "/cart", element: <Cart /> },
-      { path: "/payment", element: <Payment /> },
     ],
   },
 ];

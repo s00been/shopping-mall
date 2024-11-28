@@ -4,6 +4,7 @@ import { graphqlFetcher, QueryKeys } from "../../queryClient";
 import { GET_CART } from "../../graphql/cart";
 
 import CartItem from "../../components/cart/item";
+import Pagination from "../../components/commons/pagination";
 
 import {
   Dialog,
@@ -24,9 +25,26 @@ import {
 } from "@heroicons/react/20/solid";
 
 const Cart = () => {
+  const ITEMS_PER_PAGE = 3;
+  const [currentPage, setCurrentPage] = useState(1);
+
   const { data, isLoading, isError, error } = useQuery(QueryKeys.CART, () =>
     graphqlFetcher(GET_CART)
   );
+
+  console.log("data-cart", data);
+
+  const totalItems = data ? Object.values(data) : 0;
+  let totalPages = 1;
+  let currentData = 0;
+  if (totalItems?.length > 0) {
+    totalPages = Math.ceil(totalItems?.length / ITEMS_PER_PAGE);
+    // 현재 페이지에 해당하는 데이터 추출
+    currentData = totalItems?.slice(
+      (currentPage - 1) * ITEMS_PER_PAGE,
+      currentPage * ITEMS_PER_PAGE
+    );
+  }
 
   return (
     <div className="bg-white">
@@ -45,10 +63,17 @@ const Cart = () => {
               role="list"
               className="divide-y divide-gray-200 border-b border-t border-gray-200"
             >
-              {Object.values(data)?.map((product) => (
-                <CartItem {...product} key={product.id} />
-              ))}
+              {currentData &&
+                currentData?.map((product) => (
+                  <CartItem {...product} key={product.id} />
+                ))}
             </ul>
+            {/* 페이지 네비게이션 */}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </section>
 
           {/* Order summary */}

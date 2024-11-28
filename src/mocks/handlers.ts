@@ -39,10 +39,6 @@ export const handlers = [
     if (found) return res(ctx.data(found));
     return res();
   }),
-  graphql.query(GET_CART, (req, res, ctx) => {
-    const cartData = loadCartData(); // 로컬스토리지에서 장바구니 데이터 불러오기
-    return res(ctx.data(cartData));
-  }),
   graphql.mutation(ADD_CART, (req, res, ctx) => {
     const cartData = loadCartData(); // 로컬스토리지에서 장바구니 데이터 불러오기
     const id = req.variables.id;
@@ -65,5 +61,9 @@ export const handlers = [
     saveCartData(newCartData);
 
     return res(ctx.data(newItem)); // 갱신된 장바구니 데이터를 반환
+  }),
+  graphql.query(GET_CART, (req, res, ctx) => {
+    const cartData = loadCartData(); // 로컬스토리지에서 장바구니 데이터 불러오기
+    return res(ctx.data(cartData));
   }),
 ];

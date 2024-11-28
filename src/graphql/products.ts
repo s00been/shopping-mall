@@ -1,20 +1,5 @@
 import { gql } from "graphql-tag";
 
-export type Product = {
-  id: string;
-  imageUrl: string;
-  price: number;
-  category: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  rate: number;
-};
-
-export type Products = {
-  products: Product[];
-};
-
 export const GET_PRODUCTS = gql`
   query GET_PRODUCTS {
     id

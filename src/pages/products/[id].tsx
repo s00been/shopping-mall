@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
 import { useParams } from "react-router-dom";
 import { graphqlFetcher, QueryKeys } from "../../queryClient";
 import { GET_PRODUCT } from "../../graphql/products";
@@ -6,11 +6,17 @@ import { GET_PRODUCT } from "../../graphql/products";
 import StarRatings from "react-star-ratings";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
+import { ADD_CART } from "../../graphql/cart";
+
 const ProductDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const { data, isLoading, isError, error } = useQuery<Product>(
     [QueryKeys.PRODUCTS, id],
     () => graphqlFetcher(GET_PRODUCT, { id }) as Promise<Product>
+  );
+
+  const { mutate: addCart } = useMutation<void, Error, string>((id: string) =>
+    graphqlFetcher(ADD_CART, { id })
   );
 
   if (isLoading) {
@@ -80,10 +86,10 @@ const ProductDetail = () => {
               />
             </div>
 
-            <form className="mt-6">
+            <div className="mt-6">
               <div className="mt-10 flex">
                 <button
-                  type="submit"
+                  onClick={() => addCart(id)}
                   className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                 >
                   Add to bag
@@ -97,7 +103,7 @@ const ProductDetail = () => {
                   <span className="sr-only">Add to favorites</span>
                 </button>
               </div>
-            </form>
+            </div>
 
             <section aria-labelledby="details-heading" className="mt-12">
               <h2 id="details-heading" className="sr-only">

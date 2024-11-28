@@ -55,13 +55,13 @@ const Header = () => {
 
             {/* Logo */}
             <div className="ml-4 flex lg:ml-0 mr-5">
-              <a href="#">
+              <Link to="/">
                 <span className="sr-only">Your Company</span>
                 <FontAwesomeIcon
                   icon={faShop}
                   className="h-8 w-auto text-indigo-600"
                 />
-              </a>
+              </Link>
             </div>
 
             <div className="group relative text-sm">

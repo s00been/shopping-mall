@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Product } from "../../graphql/products";
+import { Product } from "../../graphqlType";
 import { likeItemSelector } from "../../recoils/like";
 import { useRecoilState, useRecoilValue } from "recoil";
 const ProductItem = ({

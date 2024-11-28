@@ -27,10 +27,6 @@
   input[type="number"]:focus::placeholder {
     @apply opacity-0;
   }
-  select {
-    @apply focus:outline-none focus:ring-0 focus:border-[#494B50] px-2 border-[#C8C9D6] border-[1px] bg-[url('/images/icon_down.png')] bg-auto;
-  }
-
   img {
     outline: none; /* 기본 포커스 스타일 제거 */
     border: none; /* 기본 활성화 스타일 제거 */

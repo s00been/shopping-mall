@@ -31,13 +31,13 @@ const ProductItem = ({
   };
 
   return (
-    <div className="flex flex-col items-start justify-between">
+    <div className="flex flex-col justify-between">
       <div role="button" onClick={handlePageMove}>
         <div className="relative w-full h-[222px]">
           <img
             alt=""
             src={imageUrl}
-            className="w-full h-full bg-white object-contain"
+            className="w-full h-full bg-white  object-fit"
             onMouseDown={(e) => e.preventDefault()}
           />
           <FontAwesomeIcon

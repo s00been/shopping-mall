@@ -4,8 +4,8 @@ import { QueryClientProvider } from "react-query";
 import { getClient } from "./queryClient"; // Singleton QueryClient 가져오기
 import { routes } from "./routes";
 import "./styles/globals.css";
-import { ReactQueryDevtools } from 'react-query/devtools';
-import Gnb from "./components/gnb";
+import { ReactQueryDevtools } from "react-query/devtools";
+import Header from "./components/commons/header";
 
 const App = () => {
   const queryClient = getClient();
@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Gnb />
+      <Header />
       {elem}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

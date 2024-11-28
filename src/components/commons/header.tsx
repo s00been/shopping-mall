@@ -75,7 +75,7 @@ const Header = () => {
 
             {/* Flyout menus */}
             <div className="ml-auto flex items-center">
-              <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+              {/* <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                 <a
                   href="#"
                   className="text-sm font-medium text-gray-700 hover:text-gray-800"
@@ -89,7 +89,7 @@ const Header = () => {
                 >
                   Create account
                 </a>
-              </div>
+              </div> */}
 
               {/* Search */}
               {/* <div className="flex lg:ml-6">

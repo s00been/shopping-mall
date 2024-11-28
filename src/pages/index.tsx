@@ -44,13 +44,6 @@ const MainPage = () => {
           <div className="mt-8">
             <p className="font-semibold mb-2">기능 정의</p>
             <ul className="text-sm">
-              <li className="">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className="text-sm mr-3 w-auto text-indigo-600"
-                />
-                사용자 인증 시스템 : 로그인 및 회원가입
-              </li>
               <li>
                 <FontAwesomeIcon
                   icon={faCheck}

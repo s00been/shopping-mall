@@ -3,7 +3,7 @@ import {
   faStar as farStar,
   faHeart as farHeart,
 } from "@fortawesome/free-regular-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Product } from "../../graphqlType";
 import { likeItemSelector } from "../../recoils/like";
@@ -44,7 +44,7 @@ const ProductItem = ({
           />
           <FontAwesomeIcon
             icon={isLiked ? faHeart : farHeart}
-            className="absolute bottom-2 right-2 pr-1 text-[20px] text-white shadow-sm"
+            className="absolute bottom-2 right-2 text-[20px] text-white shadow-sm"
             onClick={handleToggleLike}
           />
         </div>

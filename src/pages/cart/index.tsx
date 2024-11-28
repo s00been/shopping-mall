@@ -6,23 +6,7 @@ import { GET_CART } from "../../graphql/cart";
 import CartItem from "../../components/cart/item";
 import Pagination from "../../components/commons/pagination";
 
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-} from "@headlessui/react";
-import { XMarkIcon as XMarkIconOutline } from "@heroicons/react/24/outline";
-import {
-  CheckIcon,
-  ClockIcon,
-  QuestionMarkCircleIcon,
-  XMarkIcon as XMarkIconMini,
-} from "@heroicons/react/20/solid";
+import { QuestionMarkCircleIcon } from "@heroicons/react/20/solid";
 
 const Cart = () => {
   const ITEMS_PER_PAGE = 3;

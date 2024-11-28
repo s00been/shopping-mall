@@ -7,7 +7,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div>
+    <div className="mt-5 flex justify-center items-center">
       <button
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
@@ -16,7 +16,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       </button>
 
       <span>
-        페이지 {currentPage} / {totalPages}
+        {currentPage} / {totalPages}
       </span>
 
       <button

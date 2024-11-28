@@ -1,37 +1,24 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-} from "@headlessui/react";
+import { useQuery } from "react-query";
+import { graphqlFetcher, QueryKeys } from "../../queryClient";
+import { GET_CART } from "../../graphql/cart";
+
 import {
   HeartIcon,
   Bars3Icon,
-  MagnifyingGlassIcon,
   ShoppingBagIcon,
-  XMarkIcon as XMarkIconOutline,
 } from "@heroicons/react/24/outline";
-import {
-  CheckIcon,
-  ClockIcon,
-  QuestionMarkCircleIcon,
-  XMarkIcon as XMarkIconMini,
-} from "@heroicons/react/20/solid";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShop } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
+  const { data, isLoading, isError, error } = useQuery(QueryKeys.CART, () =>
+    graphqlFetcher(GET_CART)
+  );
+  const cartData = data ? Object.values(data) : null;
+
   const [open, setOpen] = useState(false);
 
   return (
@@ -121,7 +108,7 @@ const Header = () => {
                     className="size-6 shrink-0 text-gray-400 group-hover:text-gray-500"
                   />
                   <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                    0
+                    {cartData?.length}
                   </span>
                   <span className="sr-only">items in cart, view bag</span>
                 </Link>

@@ -9,7 +9,6 @@ import Pagination from "../../components/commons/pagination";
 import { QuestionMarkCircleIcon } from "@heroicons/react/20/solid";
 
 const Cart = () => {
-  const ITEMS_PER_PAGE = 3;
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data, isLoading, isError, error } = useQuery(QueryKeys.CART, () =>
@@ -18,17 +17,27 @@ const Cart = () => {
 
   console.log("data-cart", data);
 
-  const totalItems = data ? Object.values(data) : 0;
+  const ITEMS_PER_PAGE = 3;
+  const totalItems = data ? Object.values(data) : [];
+
   let totalPages = 1;
-  let currentData = 0;
-  if (totalItems?.length > 0) {
-    totalPages = Math.ceil(totalItems?.length / ITEMS_PER_PAGE);
-    // 현재 페이지에 해당하는 데이터 추출
-    currentData = totalItems?.slice(
+  let currentData = [];
+
+  // Ensure there is data before proceeding with pagination logic
+  if (totalItems.length > 0) {
+    totalPages = Math.ceil(totalItems.length / ITEMS_PER_PAGE);
+
+    // Get the data for the current page
+    currentData = totalItems.slice(
       (currentPage - 1) * ITEMS_PER_PAGE,
       currentPage * ITEMS_PER_PAGE
     );
   }
+
+  // Pagination handlers
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="bg-white">
@@ -56,7 +65,7 @@ const Cart = () => {
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
             />
           </section>
 

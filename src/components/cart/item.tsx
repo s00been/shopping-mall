@@ -14,14 +14,27 @@ const CartItem = ({
   title,
   description,
   amount,
+  checked,
+  onCheckboxChange,
 }: Cart) => {
   return (
-    <li className="flex py-6 sm:py-10">
-      <div className="shrink-0">
+    <li className="flex py-6 sm:py-4">
+      <div className="flex items-start">
+        {/* Checkbox */}
+        <input
+          type="checkbox"
+          id={`checkbox-${id}`}
+          checked={checked} // 상태 반영
+          onChange={onCheckboxChange} // 핸들러 연결
+          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div className="shrink-0 ml-4">
         <img
           alt={imageUrl}
           src={imageUrl}
-          className="size-24 rounded-md object-cover sm:size-48"
+          className="size-24 rounded-md object-cover sm:size-32"
         />
       </div>
 

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { graphqlFetcher, QueryKeys } from "../../queryClient";
 import { GET_CART } from "../../graphql/cart";
@@ -9,34 +9,44 @@ import Pagination from "../../components/commons/pagination";
 import { QuestionMarkCircleIcon } from "@heroicons/react/20/solid";
 
 const Cart = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [checkedItems, setCheckedItems] = useState({});
+  const [isAllChecked, setIsAllChecked] = useState(false);
 
   const { data, isLoading, isError, error } = useQuery(QueryKeys.CART, () =>
     graphqlFetcher(GET_CART)
   );
 
+  const cartData = data ? Object.values(data) : data;
+
   console.log("data-cart", data);
 
-  const ITEMS_PER_PAGE = 3;
-  const totalItems = data ? Object.values(data) : [];
+  const areAllItemsChecked = (items) => {
+    if (!items || items.length === 0) return false;
+    return items.every((item) => checkedItems[item.id]);
+  };
 
-  let totalPages = 1;
-  let currentData = [];
+  // Toggle individual checkbox
+  const handleCheckboxChange = (id) => {
+    setCheckedItems((prev) => {
+      const updatedCheckedItems = { ...prev, [id]: !prev[id] };
+      // 모든 아이템이 선택되었는지 확인
+      const allChecked = cartData?.every(
+        (item) => updatedCheckedItems[item.id]
+      );
+      setIsAllChecked(allChecked);
+      return updatedCheckedItems;
+    });
+  };
 
-  // Ensure there is data before proceeding with pagination logic
-  if (totalItems.length > 0) {
-    totalPages = Math.ceil(totalItems.length / ITEMS_PER_PAGE);
-
-    // Get the data for the current page
-    currentData = totalItems.slice(
-      (currentPage - 1) * ITEMS_PER_PAGE,
-      currentPage * ITEMS_PER_PAGE
-    );
-  }
-
-  // Pagination handlers
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const handleSelectAll = () => {
+    if (!cartData || cartData.length === 0) return; // No items to select/deselect
+    const newState = !isAllChecked;
+    setIsAllChecked(newState);
+    const updatedCheckedItems = {};
+    cartData?.forEach((item) => {
+      updatedCheckedItems[item.id] = newState;
+    });
+    setCheckedItems(updatedCheckedItems);
   };
 
   return (
@@ -52,21 +62,37 @@ const Cart = () => {
               Items in your shopping cart
             </h2>
 
+            <div className="flex items-start mb-5">
+              {/* Checkbox */}
+              <input
+                type="checkbox"
+                id="select-all"
+                checked={isAllChecked}
+                onChange={handleSelectAll}
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              />
+              <label
+                htmlFor="select-all"
+                className="ml-2 text-sm font-medium text-gray-700"
+              >
+                Select All
+              </label>
+            </div>
+
             <ul
               role="list"
               className="divide-y divide-gray-200 border-b border-t border-gray-200"
             >
-              {currentData &&
-                currentData?.map((product) => (
-                  <CartItem {...product} key={product.id} />
+              {cartData &&
+                cartData?.map((product) => (
+                  <CartItem
+                    key={product.id}
+                    {...product}
+                    checked={!!checkedItems[product.id]} // 선택 상태 전달
+                    onCheckboxChange={() => handleCheckboxChange(product.id)} // 핸들러 전달
+                  />
                 ))}
             </ul>
-            {/* 페이지 네비게이션 */}
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
           </section>
 
           {/* Order summary */}

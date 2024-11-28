@@ -3,41 +3,84 @@
 @tailwind utilities;
 
 @layer base {
-    div,
-    input,
-    textarea,
-    button,
-    select,
-    a {
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-    }
+  div,
+  input,
+  textarea,
+  button,
+  select,
+  a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
 
-    textarea, input, input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
-        @apply focus:outline-none focus:ring-0 focus:border-[#494B50] px-2 border-[#C8C9D6] border-[1px]
-    }
-    textarea:focus::placeholder, input:focus::placeholder, input[type="text"]:focus::placeholder, input[type="password"]:focus::placeholder, input[type="number"]:focus::placeholder {
-        @apply opacity-0
-    }
-   select {
-        @apply focus:outline-none focus:ring-0 focus:border-[#494B50] px-2 border-[#C8C9D6] border-[1px] bg-[url('/images/icon_down.png')] bg-auto
-    }
+  textarea,
+  input,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"] {
+    @apply focus:outline-none focus:ring-0 focus:border-[#494B50] px-2 border-[#C8C9D6] border-[1px];
+  }
+  textarea:focus::placeholder,
+  input:focus::placeholder,
+  input[type="text"]:focus::placeholder,
+  input[type="password"]:focus::placeholder,
+  input[type="number"]:focus::placeholder {
+    @apply opacity-0;
+  }
+  select {
+    @apply focus:outline-none focus:ring-0 focus:border-[#494B50] px-2 border-[#C8C9D6] border-[1px] bg-[url('/images/icon_down.png')] bg-auto;
+  }
 
-    textarea::placeholder , input::placeholder{
-        @apply text-[14px] lg:text-[15px] text-[#C8C9D6]
-    }
+  img {
+    outline: none; /* 기본 포커스 스타일 제거 */
+    border: none; /* 기본 활성화 스타일 제거 */
+  }
 
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+  img:focus,
+  img:active {
+    outline: none; /* 포커스 시 스타일 제거 */
+    border: none; /* 활성화 시 스타일 제거 */
+  }
 
-    /* Firefox  test*/
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
+  img {
+    user-select: none; /* 사용자가 이미지를 선택하지 못하도록 설정 */
+  }
+  a img {
+    outline: none;
+    border: none;
+  }
 
-    input:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px #fff inset ; -webkit-text-fill-color: #000; }
-    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { transition: background-color 5000s ease-in-out 0s; }
+  a:focus img,
+  a:active img {
+    outline: none;
+    border: none;
+  }
+
+  textarea::placeholder,
+  input::placeholder {
+    @apply text-[14px] lg:text-[15px] text-[#C8C9D6];
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox  test*/
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #fff inset;
+    -webkit-text-fill-color: #000;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }

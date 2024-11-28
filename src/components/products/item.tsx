@@ -6,7 +6,8 @@ import {
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Product } from "../../graphql/products";
-
+import { likeItemSelector } from "../../recoils/like";
+import { useRecoilState, useRecoilValue } from "recoil";
 const ProductItem = ({
   id,
   imageUrl,
@@ -18,10 +19,17 @@ const ProductItem = ({
   rate,
 }: Product) => {
   const navigate = useNavigate();
-
   const handlePageMove = () => {
     navigate(`/products/${id}`);
   };
+
+  const [isLiked, setIsLiked] = useRecoilState(likeItemSelector(id));
+
+  const handleToggleLike = (e) => {
+    e.stopPropagation();
+    setIsLiked(!isLiked);
+  };
+
   return (
     <div className="flex flex-col items-start justify-between">
       <div role="button" onClick={handlePageMove}>
@@ -30,14 +38,12 @@ const ProductItem = ({
             alt=""
             src={imageUrl}
             className="w-full h-full bg-white object-contain"
+            onMouseDown={(e) => e.preventDefault()}
           />
           <FontAwesomeIcon
-            icon={farHeart}
+            icon={isLiked ? faHeart : farHeart}
             className="absolute bottom-2 right-2 pr-1 text-[20px] text-white shadow-sm"
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("FontAwesomeIcon clicked!");
-            }}
+            onClick={handleToggleLike}
           />
         </div>
         <div className="max-w-xl w-full">

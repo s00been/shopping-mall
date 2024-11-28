@@ -69,7 +69,7 @@ const Header = () => {
                 className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-indigo-600 data-[selected]:text-indigo-600"
                 to="/products"
               >
-                Products
+                Product
               </Link>
             </div>
 

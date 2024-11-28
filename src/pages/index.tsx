@@ -5,7 +5,7 @@ const MainPage = () => {
         <p className="text-base/7 font-semibold text-indigo-600">
           프론트엔드 지원 - 윤수빈 포트폴리오
         </p>
-        <h2 className="mt-2 text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+        <h2 className="mt-6 text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
           사용자 경험을 최우선으로
         </h2>
         <div className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
@@ -26,13 +26,13 @@ const MainPage = () => {
           </p>
         </div>
       </div>
-      <p className="my-20 border-t border-[rgba(55,53,47,0.16)]"></p>
+      <p className="my-20 mx-auto border-t border-[rgba(55,53,47,0.16)] w-1/3"></p>
       <div className="mx-auto pb-24 sm:pb-32">
         <h2 className="text-center mt-10 mb-20 text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
           Skills and Tools
         </h2>
         {/* 프론트 개발 */}
-        <div className="flex justify-center gap-x-20 border-y border-[rgba(55,53,47,0.16)] py-5">
+        <div className="flex justify-center gap-x-20 py-5">
           <p className="w-[150px] font-semibold">Frontend</p>
           <div className="grid grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
             <div className="w-[205px] h-[60px] px-[12px] py-[16px] rounded-[4px] border border-[rgba(55,53,47,0.16)] flex items-center font-semibold text-[#3c3c43] text-md">
@@ -78,7 +78,7 @@ const MainPage = () => {
           </div>
         </div>
         {/* 상태 */}
-        <div className="flex justify-center gap-x-20 border-b border-[rgba(55,53,47,0.16)] py-5">
+        <div className="flex justify-center gap-x-20 py-5">
           <p className="w-[150px] font-semibold">State</p>
           <div className="grid grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
             <div className="w-[205px] h-[60px] px-[12px] py-[16px] rounded-[4px] border border-[rgba(55,53,47,0.16)] flex items-center font-semibold text-[#3c3c43] text-md">
@@ -93,7 +93,7 @@ const MainPage = () => {
           </div>
         </div>
         {/* 백엔드 및 API */}
-        <div className="flex justify-center gap-x-20 border-b border-[rgba(55,53,47,0.16)] py-5">
+        <div className="flex justify-center gap-x-20 py-5">
           <p className="w-[150px] font-semibold">Backend / API</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
             <div className="w-[205px] h-[60px] px-[12px] py-[16px] rounded-[4px] border border-[rgba(55,53,47,0.16)] flex items-center font-semibold text-[#3c3c43] text-md">

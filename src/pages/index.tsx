@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 const MainPage = () => {
   return (
     <div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -27,7 +29,55 @@ const MainPage = () => {
         </div>
       </div>
       <p className="my-20 mx-auto border-t border-[rgba(55,53,47,0.16)] w-1/3"></p>
-      <div className="mx-auto pb-24 sm:pb-32">
+      <div className="mx-auto">
+        <h2 className="text-center mt-10 mb-20 text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+          Project
+        </h2>
+        <div className="mx-auto text-center">
+          <div>
+            <p className="font-semibold mb-2">프로젝트 개요</p>
+            <ul className="text-sm">
+              <li>프로젝트명 : 쇼핑몰</li>
+              <li>목표 : 웹 기반 쇼핑몰 개발, 상품 판매 시스템 제공</li>
+            </ul>
+          </div>
+          <div className="mt-8">
+            <p className="font-semibold mb-2">기능 정의</p>
+            <ul className="text-sm">
+              <li className="">
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="text-sm mr-3 w-auto text-indigo-600"
+                />
+                사용자 인증 시스템 : 로그인 및 회원가입
+              </li>
+              <li>
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="text-sm mr-3 w-auto text-indigo-600"
+                />
+                상품 목록 및 상세 페이지
+              </li>
+              <li>
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="text-sm mr-3 w-auto text-indigo-600"
+                />
+                장바구니 및 좋아요
+              </li>
+              <li>
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="text-sm mr-3 w-auto text-indigo-600"
+                />
+                결제 및 주문 내역
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p className="my-20 mx-auto border-t border-[rgba(55,53,47,0.16)] w-1/3"></p>
+      <div className="mx-auto">
         <h2 className="text-center mt-10 mb-20 text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
           Skills and Tools
         </h2>

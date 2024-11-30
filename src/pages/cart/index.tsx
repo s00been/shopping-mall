@@ -175,7 +175,7 @@ const Cart = () => {
             <p className="font-bold">장바구니에 담은 상품이 없습니다.</p>
             <Link
               to={`/products`}
-              className="mt-8 flex mx-auto w-1/4 items-center justify-center  border border-transparent bg-gray-900 px-8 py-3 text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+              className="mt-8 text-xxs flex mx-auto w-[135px] md:w-1/4 items-center justify-center  border border-transparent bg-gray-900 px-8 py-3 md:text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
             >
               상품보러가기
             </Link>

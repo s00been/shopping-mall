@@ -26,8 +26,11 @@ const ProductDetail = () => {
 
   const [isLiked, setIsLiked] = useRecoilState(likeItemSelector(id));
 
-  const { mutate: addCart } = useMutation<void, Error, string>((id: string) =>
-    graphqlFetcher(ADD_CART, { id })
+  const { mutate: addCart } = useMutation<void, Error, string>(
+    (id: string) => graphqlFetcher(ADD_CART, { id }),
+    {
+      refetchOnWindowFocus: true, // 윈도우 포커스 시 쿼리 다시 호출
+    }
   );
 
   if (isLoading) {

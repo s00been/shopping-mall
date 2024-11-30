@@ -7,25 +7,13 @@ import mockProducts from "../data/mockProducts.json";
 
 // 로컬스토리지에서 장바구니 데이터를 가져오거나, 없으면 빈 객체로 초기화
 const loadCartData = () => {
-  const savedData = localStorage.getItem("cartData");
-  if (!savedData) return {}; // 데이터가 없으면 빈 객체 반환
-
-  const { cartData, expiry } = JSON.parse(savedData);
-
-  // 만료 시간 확인
-  if (new Date().getTime() > expiry) {
-    localStorage.removeItem("cartData"); // 만료된 데이터 삭제
-    return {}; // 빈 객체 반환
-  }
-
-  return cartData; // 유효한 데이터 반환
+  const savedCartData = localStorage.getItem("cartData");
+  return savedCartData ? JSON.parse(savedCartData) : {};
 };
 
 // 장바구니 데이터를 로컬스토리지에 저장
 const saveCartData = (cartData) => {
-  const expiry = new Date().getTime() + 24 * 60 * 60 * 1000; // 현재 시간 + 24시간
-  const dataWithExpiry = { cartData, expiry };
-  localStorage.setItem("cartData", JSON.stringify(dataWithExpiry));
+  localStorage.setItem("cartData", JSON.stringify(cartData));
 };
 
 export const handlers = [

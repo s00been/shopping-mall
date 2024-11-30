@@ -17,6 +17,8 @@ const Header = () => {
   const { data, isLoading, isError, error } = useQuery(QueryKeys.CART, () =>
     graphqlFetcher(GET_CART)
   );
+
+  console.log("Header", data);
   const cartData = data ? Object.values(data) : null;
 
   const [open, setOpen] = useState(false);

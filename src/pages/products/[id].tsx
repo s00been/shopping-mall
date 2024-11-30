@@ -5,7 +5,7 @@ import { GET_PRODUCT } from "../../graphql/products";
 
 import StarRatings from "react-star-ratings";
 import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-
+import numeral from "numeral";
 import { ADD_CART } from "../../graphql/cart";
 
 const ProductDetail = () => {
@@ -31,32 +31,34 @@ const ProductDetail = () => {
     );
   }
 
-  const { category, description, imageUrl, price, rate, title } = data;
+  const { category, color, description, imageUrl, price, rate, title } = data;
 
   console.log(data);
 
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
+        <div className="relative lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
           <div className="mt-10 lg:col-start-1 lg:row-span-2 lg:mt-0 lg:self-center">
             <img
               alt={imageUrl}
               src={imageUrl}
-              className="aspect-square w-full rounded-lg object-contain"
+              className="aspect-square w-full rounded-lg object-fill"
             />
           </div>
 
           {/* Product info */}
           <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              {title}
+              {title} - {color}
             </h1>
 
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl tracking-tight text-gray-900">${price}</p>
+              <p className="text-3xl tracking-tight text-gray-900">
+                {numeral(price).format("0,0")}원
+              </p>
             </div>
 
             {/* Reviews */}
@@ -86,36 +88,19 @@ const ProductDetail = () => {
               />
             </div>
 
-            <div className="mt-6">
-              <div className="mt-10 flex">
+            <div className="absolute w-full bottom-0">
+              <div className="flex">
                 <button
                   onClick={() => addCart(id)}
-                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+                  className="flex max-w-xs flex-1 items-center justify-center  border border-indigo-600 bg-white px-8 py-3 text-base font-medium text-indigo-600  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                 >
-                  Add to bag
+                  장바구니
                 </button>
-
-                <button
-                  type="button"
-                  className="ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-                >
-                  <HeartIcon aria-hidden="true" className="size-6 shrink-0" />
-                  <span className="sr-only">Add to favorites</span>
+                <button className="flex max-w-xs flex-1 items-center justify-center  border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full">
+                  구매하기
                 </button>
               </div>
             </div>
-
-            <section aria-labelledby="details-heading" className="mt-12">
-              <h2 id="details-heading" className="sr-only">
-                Additional details
-              </h2>
-
-              <div className="divide-y divide-gray-200 border-t">
-                <span className="text-sm font-medium text-gray-900 group-data-[open]:text-indigo-600">
-                  {description}
-                </span>
-              </div>
-            </section>
           </div>
         </div>
       </div>

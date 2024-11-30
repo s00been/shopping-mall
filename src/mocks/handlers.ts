@@ -3,17 +3,7 @@ import { GET_CART, ADD_CART } from "../graphql/cart";
 import { GET_PRODUCTS, GET_PRODUCT } from "../graphql/products";
 import { CartType } from "../graphqlType";
 
-const mockProducts = (() =>
-  Array.from({ length: 20 }).map((_, i) => ({
-    id: i + 1 + "",
-    imageUrl: `https://loremflickr.com/640/480?random=${i + 1}`,
-    price: 50000,
-    category: `Category ${i + 1}`,
-    title: `임시상품${i + 1}`,
-    description: `임시상품상세내용${i + 1}`,
-    createdAt: new Date(1694461295180 + i * 1000 * 60).toString(),
-    rate: 3,
-  })))();
+import mockProducts from "../data/mockProducts.json";
 
 // 로컬스토리지에서 장바구니 데이터를 가져오거나, 없으면 빈 객체로 초기화
 const loadCartData = () => {

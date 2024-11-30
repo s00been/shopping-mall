@@ -35,7 +35,7 @@ const ProductItem = ({
   return (
     <div className="flex flex-col justify-between">
       <div role="button" onClick={handlePageMove}>
-        <div className="relative w-full h-[222px]">
+        <div className="relative w-full h-[300px]">
           <img
             alt=""
             src={imageUrl}
@@ -44,7 +44,7 @@ const ProductItem = ({
           />
           <FontAwesomeIcon
             icon={isLiked ? faHeart : farHeart}
-            className="absolute bottom-2 right-2 text-[20px] text-white shadow-sm"
+            className="absolute bottom-2 right-2 text-[20px] text-white"
             onClick={handleToggleLike}
           />
         </div>

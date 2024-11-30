@@ -44,7 +44,7 @@ const ProductItem = ({
           />
           <FontAwesomeIcon
             icon={isLiked ? faHeart : farHeart}
-            className="absolute bottom-2 right-2 text-[20px] text-white"
+            className="cursor-pointer absolute bottom-2 right-2 text-[20px] text-white"
             onClick={handleToggleLike}
           />
         </div>
